@@ -7,6 +7,9 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+ARG env=development
+ENV NODE_ENV=$env
+
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
@@ -14,6 +17,6 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 3001
 
 CMD [ "npm", "start" ]
